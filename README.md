@@ -84,14 +84,24 @@ pip install -r requirements.txt
 
 #### Step 2. Run HashFormer
 Before you run this code you should download the datasets and matching the dataloader
+To pretrain the model you should run:
 ```bash
 bash pre_train.sh
 ```
+To train the pre-trained model for classification you should run as follows:
+```bash
+bash train.sh
+```
 
+To validate the pre-trained model for classification you should run as follows:
+```bash
+bash val.sh
+```
 ## Visual-Data
-Use train.py adapted for visual data.
+Use train.py daynamically adapted for visual data.
 - DF-TMIT
 - Faceforensics++
+- ASVSpoof2019
 
 ## Audio-Visual-Data
 Use train.py for multimodal training.

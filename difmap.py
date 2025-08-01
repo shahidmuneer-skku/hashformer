@@ -59,8 +59,8 @@ def lpips_diff_map(real_img, fake_img, device='cuda' if torch.cuda.is_available(
 
 # === 4. Run it ===
 if __name__ == "__main__":
-    real_path = "/media/NAS/DATASET/faceforensics++/QAD/v1face_data/data_raw/original_sequences/youtube/raw/v1faces/004/0000.png"
-    fake_path = "/media/NAS/DATASET/faceforensics++/QAD/v1face_data/data_raw/manipulated_sequences/FaceSwap/raw/v1faces/004_982/0000.png"
+    real_path = "<path_to_dataset>/faceforensics++/QAD/v1face_data/data_raw/original_sequences/youtube/raw/v1faces/004/0000.png"
+    fake_path = "<path_to_dataset>/faceforensics++/QAD/v1face_data/data_raw/manipulated_sequences/FaceSwap/raw/v1faces/004_982/0000.png"
 
     real = load_image(real_path)
     fake = load_image(fake_path)

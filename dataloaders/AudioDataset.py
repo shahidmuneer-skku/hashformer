@@ -126,7 +126,7 @@ class AudioDataset(Dataset):
         
         self.n_mfcc = 40
         # AVSpoof2021
-        # base_dir = "/media/NAS/DATASET/ASVspoof2021/ASVspoof2021_DF_eval/"
+        # base_dir = "<path_to_dataset>/ASVspoof2021/ASVspoof2021_DF_eval/"
 
         # spoof_entries = []
         # bonafide_entries = []
@@ -155,7 +155,7 @@ class AudioDataset(Dataset):
         
         # AVSpoof2019
 
-        base_dir = "/media/NAS/DATASET/ASVspoof2019/dataset/LA/"
+        base_dir = "<path_to_dataset>/ASVspoof2019/dataset/LA/"
         
         max_spoof = 100000000
         max_bonafide = 100000000

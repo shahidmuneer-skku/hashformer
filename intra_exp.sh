@@ -1,1 +1,1 @@
-CUDA_VISIBLE_DEVICES=1,2,3,4 torchrun --standalone --nproc_per_node=3 intra_exp.py --base_dir /media/NAS/DATASET/deepspeak/ --batch_size 32 --log_dir ./training_logs/intra/KoDF #--load_from /media/NAS/USERS/shahid/HashFormer/training_logs/intra/fakeAVCeleb/rawnet/20250725-173203
+CUDA_VISIBLE_DEVICES=1,2,3,4 torchrun --standalone --nproc_per_node=3 intra_exp.py --base_dir <base_dir> --batch_size 32 --log_dir <logdir>

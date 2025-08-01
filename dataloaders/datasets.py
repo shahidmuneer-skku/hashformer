@@ -206,7 +206,7 @@ def build_file_list(base_dir, partition, take_datasets):
     features = {"landmarks":{}, "audio_path":{}}
     file_list=[]
     video_files = {}
-    base_dir_v2="/media/NAS/DATASET/deepspeak_v2"
+    base_dir_v2="<path_to_dataset>/deepspeak_v2"
 
     features_v2 = {"landmarks":{}, "audio_path":{}}
     video_files_v2 = {}
@@ -367,7 +367,7 @@ def build_file_list(base_dir, partition, take_datasets):
                                                                 
 
     if "TIMIT_HQ" in take_datasets:
-        root_dir = "/media/NAS/DATASET/DeepfakeTIMIT/features_mtcnn/higher_quality"
+        root_dir = "<path_to_dataset>/DeepfakeTIMIT/features_mtcnn/higher_quality"
             # Traverse the directory structure
         for root, dirs, files in os.walk(root_dir):
             for file in files:
@@ -390,7 +390,7 @@ def build_file_list(base_dir, partition, take_datasets):
 
 
     if "TIMIT_LQ" in take_datasets:
-        root_dir = "/media/NAS/DATASET/DeepfakeTIMIT/features_mtcnn/low_quality"
+        root_dir = "<path_to_dataset>/DeepfakeTIMIT/features_mtcnn/low_quality"
             # Traverse the directory structure
         total = 0 
         for root, dirs, files in os.walk(root_dir):
@@ -423,7 +423,7 @@ def build_file_list(base_dir, partition, take_datasets):
                     
     if partition=="test":
         if "FakeAVCeleb" in take_datasets:
-            fakeavceleb_path = "/media/NAS/DATASET/FakeAVCeleb_v1.2/" 
+            fakeavceleb_path = "<path_to_dataset>/FakeAVCeleb_v1.2/" 
             csv_path = f'{fakeavceleb_path}meta_data.csv'  # Change this to the actual path of your CSV file
             data = pd.read_csv(csv_path)
             if partition=="test":
@@ -466,7 +466,7 @@ def build_file_list(base_dir, partition, take_datasets):
     if partition=="train":
         
         if "FakeAVCeleb" in take_datasets:
-            fakeavceleb_path = "/media/NAS/DATASET/FakeAVCeleb_v1.2/" 
+            fakeavceleb_path = "<path_to_dataset>/FakeAVCeleb_v1.2/" 
             csv_path = f'{fakeavceleb_path}meta_data.csv'  # Change this to the actual path of your CSV file
             
             data = pd.read_csv(csv_path)
@@ -503,7 +503,7 @@ def build_file_list(base_dir, partition, take_datasets):
 
 
     if "DFDC" in take_datasets:
-        root_dir = "/media/NAS/DATASET/DFDC-Official/dfdc_features/"
+        root_dir = "<path_to_dataset>/DFDC-Official/dfdc_features/"
         dataset = pd.read_json(os.path.join(root_dir,"dataset.json"))
         dataset = dataset.T
         if partition=="test":
@@ -522,7 +522,7 @@ def build_file_list(base_dir, partition, take_datasets):
 
           
     if "KoDF" in take_datasets:
-        root_dir = "/media/NAS/DATASET/KoDF/features_mtcnn/"
+        root_dir = "<path_to_dataset>/KoDF/features_mtcnn/"
         dataset = pd.read_csv(os.path.join(root_dir,"validate_meta_data","fake.csv"))
         dataset["folder2"] = dataset["folder2"].fillna(0)
         if partition=="test":

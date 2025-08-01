@@ -22,7 +22,7 @@ from tqdm import tqdm
 from dataloaders.faceswapVideoDataset import FaceswapVideoDataset
 # your dataset
 faceswap_val_video_dataset = FaceswapVideoDataset(
-    "/media/NAS/DATASET/deepspeak/",
+    "<path_to_dataset>/deepspeak/",
     partition="test",
     take_datasets=["NeuralTextures"]
 )
@@ -231,7 +231,7 @@ def inference(video_path: str, checkpoint: str, device: torch.device, model , to
     video = video[:B]
 
     
-    # out_dir = '/media/NAS/USERS/shahid/MultimodalAudioVisualModerator/deepfakes/cropped/'
+    # out_dir = 'output_dir'
     # os.makedirs(out_dir, exist_ok=True)
     # for i in range(B):
     #     clip = (video[i] * 255).permute(0, 2, 3, 1).cpu().numpy().astype(np.uint8)  # (T, H, W, C)
@@ -359,7 +359,7 @@ def inference(video_path: str, checkpoint: str, device: torch.device, model , to
     #     # video = video[:B]
 
         
-    #     # out_dir = '/media/NAS/USERS/shahid/MultimodalAudioVisualModerator/deepfakes/cropped/'
+    #     # out_dir = 'output_dir'
     #     # os.makedirs(out_dir, exist_ok=True)
     #     # for i in range(B):
     #     #     clip = (video[i] * 255).permute(0, 2, 3, 1).cpu().numpy().astype(np.uint8)  # (T, H, W, C)
@@ -510,7 +510,4 @@ if __name__ == "__main__":
     print(f"F1-score          : {f1:.4f}")
     print(f"ROC-AUC           : {auc:.4f}")
     print(f"Average Precision : {ap:.4f}")
-    #   CUDA_VISIBLE_DEVICES=2 python inference.py --checkpoint /media/NAS/USERS/shahid/MultimodalAudioVisualModerator/training_logs/aaai/multimodal/deepspeak_v2/rawnet/20250713-081648/checkpoints/best_model.pt --video_path /media/NAS/USERS/shahid/MultimodalAudioVisualModerator/deepfakes/
-
-    # auc 76%
-    #  CUDA_VISIBLE_DEVICES=2 python inference.py --checkpoint /media/NAS/USERS/shahid/MultimodalAudioVisualModerator/training_logs/aaai/multimodal/deepspeak_v2/rawnet/20250713-224858/checkpoints/model_state.pt --video_path /media/NAS/USERS/shahid/MultimodalAudioVisualModerator/deepfakes/
+ 

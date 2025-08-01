@@ -1,1 +1,1 @@
-CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --standalone --nproc_per_node=4 val_visual_pertubations.py --base_dir /media/NAS/DATASET/deepspeak/ --batch_size 32 --log_dir ./training_logs/robustness/ --load_from /media/NAS/USERS/shahid/HashFormer/training_logs/intra/fakeAVCeleb/rawnet/20250725-200729
+CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --standalone --nproc_per_node=4 val_pertubations.py --base_dir <base_dir> --batch_size 32 --log_dir <logdir> --load_from <load_from dir>

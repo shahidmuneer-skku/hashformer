@@ -1,1 +1,1 @@
-CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --standalone --nproc_per_node=4 train.py --base_dir /media/NAS/DATASET/deepspeak/ --batch_size 16 --log_dir ./training_logs/ood #--load_from /media/NAS/USERS/shahid/HashFormer/training_logs/faceforensics++/rawnet/20250729-122254
+CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --standalone --nproc_per_node=4 train.py --base_dir <base_dir> --batch_size 16 --log_dir <logdir>

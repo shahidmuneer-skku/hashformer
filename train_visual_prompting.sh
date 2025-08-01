@@ -1,1 +1,1 @@
-CUDA_VISIBLE_DEVICES=0,1 torchrun --standalone --nproc_per_node=2 train_visual_prompting.py --base_dir /media/NAS/DATASET/deepspeak/ --batch_size 32 --log_dir ./training_logs/visual_prompting/intra/dftimit_lq #--load_from /media/NAS/USERS/shahid/HashFormer/training_logs/deepspeak_exp2/rawnet/20250726-233752
+CUDA_VISIBLE_DEVICES=0,1 torchrun --standalone --nproc_per_node=2 train_visual_prompting.py --base_dir <base_dir> --batch_size 32 --log_dir <logdir>

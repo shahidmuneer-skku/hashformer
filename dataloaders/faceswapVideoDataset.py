@@ -117,7 +117,7 @@ class FaceswapVideoDataset(Dataset):
 
         # -------------  build list of video files (unchanged) ------------
         self.file_list: list[dict] = []  # each {path, label}
-        ff_root = Path("/media/NAS/DATASET/FaceForensics_Dec2020/FaceForensics++")
+        ff_root = Path("<path_to_dataset>/FaceForensics_Dec2020/FaceForensics++")
         json_split = "train.json" if partition == "train" else "test.json"
         df = pd.read_json(ff_root / "author_splits" / json_split)
         
