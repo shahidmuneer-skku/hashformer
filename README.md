@@ -28,7 +28,7 @@ Author: anonymous
 
 ## Introduction
 <p align="center">
-<img src="Model_diagram.pdf" alt="HashFormer Model" width="900"/>
+<img src="model.png" alt="HashFormer Model" width="900"/>
 </p>
 
 This repository contains the official implementation (in PyTorch) of HashFormer, proposed in the paper HashFormer: Contrastive Hashing with a Unified Temporal Transformer for Robust Audio-Visual Deepfake Detection (Anonymous submission).
