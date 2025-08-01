@@ -73,7 +73,7 @@ File list: Built via [`dataloaders/datasets.py`](dataloaders/datasets.py)'s buil
 See sample files in repo. Supported: DF-TIMIT, DFDC, FakeAVCeleb, KoDF, DeepSpeak, FaceForensics++.
 
 
-## hashformer-pretraining
+## HashFormer Training
 #### Step 1. Build a environment and install pacages
 ```bash
 conda create -n hashformer python=3.8
