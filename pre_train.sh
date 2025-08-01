@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5 torchrun --standalone --nproc_per_node=6 pre_train.py --base_dir /media/NAS/DATASET/deepspeak/ --batch_size 6 --log_dir /media/NAS/USERS/shahid/MultimodalAudioVisualModerator/training_logs/aaai/multimodal/video/gpu4/pretrain #--load_from /media/NAS/USERS/shahid/MultimodalAudioVisualModerator/training_logs/pretrain_gpu4/rawnet/20250518-125107
