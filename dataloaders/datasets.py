@@ -206,7 +206,7 @@ def build_file_list(base_dir, partition, take_datasets):
     features = {"landmarks":{}, "audio_path":{}}
     file_list=[]
     video_files = {}
-    base_dir_v2="<path_to_dataset>/deepspeak_v2"
+    base_dir_v2="<path_to_dataset>deepspeak_v2"
 
     features_v2 = {"landmarks":{}, "audio_path":{}}
     video_files_v2 = {}
@@ -217,7 +217,7 @@ def build_file_list(base_dir, partition, take_datasets):
         if not os.path.exists(subdir):
             continue
         for file in os.listdir(subdir):
-            video_file = os.path.join(subdir,os.path.join(file,"cropped_video.mp4"))
+            video_file = os.path.join(subdir,os.path.join(file,"crop_face_00.mp4"))
            
             # if(video_file is not None):
             #     print("This is not noe")
@@ -226,7 +226,7 @@ def build_file_list(base_dir, partition, take_datasets):
                 continue
             if not os.path.exists(video_file.replace("mp4","wav")): 
                 continue
-            if not os.path.exists(video_file.replace("cropped_video.mp4","landmarks.npy")): 
+            if not os.path.exists(video_file.replace("crop_face_00.mp4","landmarks.npy")): 
                 continue
             file = file+".mp4"
             video_files[file]= video_file
@@ -247,7 +247,7 @@ def build_file_list(base_dir, partition, take_datasets):
                     continue
                 if not os.path.join(subdir,os.path.join(file,file.replace(".mp4","_audio.wav"))): 
                     continue
-                if not os.path.exists(video_file.replace("cropped_video.mp4","landmarks.npy")): 
+                if not os.path.exists(video_file.replace("crop_face_00.mp4","landmarks.npy")): 
                     continue
                 file = file+".mp4"
                 video_files_v2[file]= video_file
@@ -367,14 +367,14 @@ def build_file_list(base_dir, partition, take_datasets):
                                                                 
 
     if "TIMIT_HQ" in take_datasets:
-        root_dir = "<path_to_dataset>/DeepfakeTIMIT/features_mtcnn/higher_quality"
+        root_dir = "<path_to_dataset>DeepfakeTIMIT/features_mtcnn/higher_quality"
             # Traverse the directory structure
         for root, dirs, files in os.walk(root_dir):
             for file in files:
                 if file.endswith(".mp4"):
                     video_path = os.path.join(root, file)
-                    audio_path = os.path.join(root, file.replace("cropped_video.mp4", "cropped_video.wav"))
-                    landmarks_path = os.path.join(root, file.replace("cropped_video.mp4", "landmarks.npy"))
+                    audio_path = os.path.join(root, file.replace("crop_face_00.mp4", "cropped_video.wav"))
+                    landmarks_path = os.path.join(root, file.replace("crop_face_00.mp4", "landmarks.npy"))
 
                     # Check if the video and audio files exist
                     if os.path.exists(video_path) and os.path.exists(audio_path) and os.path.exists(audio_path):
@@ -390,7 +390,7 @@ def build_file_list(base_dir, partition, take_datasets):
 
 
     if "TIMIT_LQ" in take_datasets:
-        root_dir = "<path_to_dataset>/DeepfakeTIMIT/features_mtcnn/low_quality"
+        root_dir = "<path_to_dataset>DeepfakeTIMIT/features_mtcnn/low_quality"
             # Traverse the directory structure
         total = 0 
         for root, dirs, files in os.walk(root_dir):
@@ -401,8 +401,8 @@ def build_file_list(base_dir, partition, take_datasets):
                     #     break
                     # Construct paths
                     video_path = os.path.join(root, file)
-                    audio_path = os.path.join(root, file.replace("cropped_video.mp4", "cropped_video.wav"))
-                    landmarks_path = os.path.join(root, file.replace("cropped_video.mp4", "landmarks.npy"))
+                    audio_path = os.path.join(root, file.replace("crop_face_00.mp4", "cropped_video.wav"))
+                    landmarks_path = os.path.join(root, file.replace("crop_face_00.mp4", "landmarks.npy"))
 
                     # Check if the video and audio files exist
                     if os.path.exists(video_path) and os.path.exists(audio_path) and os.path.exists(audio_path):
@@ -423,7 +423,7 @@ def build_file_list(base_dir, partition, take_datasets):
                     
     if partition=="test":
         if "FakeAVCeleb" in take_datasets:
-            fakeavceleb_path = "<path_to_dataset>/FakeAVCeleb_v1.2/" 
+            fakeavceleb_path = "<path_to_dataset>FakeAVCeleb_v1.2/" 
             csv_path = f'{fakeavceleb_path}meta_data.csv'  # Change this to the actual path of your CSV file
             data = pd.read_csv(csv_path)
             if partition=="test":
@@ -438,10 +438,10 @@ def build_file_list(base_dir, partition, take_datasets):
                 feature_path = os.path.join(fakeavceleb_path,row['Unnamed: 9'].replace("FakeAVCeleb/", "landmark_features/features_mediapipe/"))
                 
 
-                video_path = os.path.join(path, row["path"].replace(".mp4","/cropped_video.mp4"))
-                audio_path = os.path.join(path, row["path"].replace(".mp4","/cropped_video.wav"))
+                video_path = os.path.join(path, row["path"].replace(".mp4","/crop_face_00.mp4"))
+                audio_path = os.path.join(path, row["path"].replace(".mp4",f"/{video}_audio.wav"))
                 
-                landmark_features = os.path.join(feature_path, row["path"].replace(".mp4", "/landmarks.npy"))
+                landmark_features = os.path.join(feature_path, row["path"].replace(".mp4", "/landmarks_00.npy"))
             
                 label = 0 if row["type"]=="real" else 1   
                 if(row["type"]=="real"):
@@ -466,7 +466,7 @@ def build_file_list(base_dir, partition, take_datasets):
     if partition=="train":
         
         if "FakeAVCeleb" in take_datasets:
-            fakeavceleb_path = "<path_to_dataset>/FakeAVCeleb_v1.2/" 
+            fakeavceleb_path = "<path_to_dataset>FakeAVCeleb_v1.2/" 
             csv_path = f'{fakeavceleb_path}meta_data.csv'  # Change this to the actual path of your CSV file
             
             data = pd.read_csv(csv_path)
@@ -480,9 +480,9 @@ def build_file_list(base_dir, partition, take_datasets):
                 feature_path = os.path.join(fakeavceleb_path,row['Unnamed: 9'].replace("FakeAVCeleb/", "landmark_features/features_mediapipe/"))
                 
                 # exit()
-                video_path = os.path.join(path, row["path"].replace(".mp4","/cropped_video.mp4"))
-                audio_path = os.path.join(path, row["path"].replace(".mp4","/cropped_video.wav"))
-                landmark_features = os.path.join(feature_path, row["path"].replace(".mp4", "/landmarks.npy"))
+                video_path = os.path.join(path, row["path"].replace(".mp4","/crop_face_00.mp4"))
+                audio_path = os.path.join(path, row["path"].replace(".mp4",f"/{video}_audio.wav"))
+                landmark_features = os.path.join(feature_path, row["path"].replace(".mp4", "/landmarks_00.npy"))
             
                 label = 0 if row["type"]=="real" else 1   
                 # if(row["type"]=="real"):
@@ -503,44 +503,68 @@ def build_file_list(base_dir, partition, take_datasets):
 
 
     if "DFDC" in take_datasets:
-        root_dir = "<path_to_dataset>/DFDC-Official/dfdc_features/"
+        root_dir = "<path_to_dataset>DFDC-Official/dfdc_features/"
         dataset = pd.read_json(os.path.join(root_dir,"dataset.json"))
         dataset = dataset.T
         if partition=="test":
              dataset = dataset[:400]
         for index,row in dataset.iterrows():
-            if(os.path.exists(os.path.join(root_dir,index.replace(".mp4","/cropped_video.mp4"))) 
-            and os.path.exists(os.path.join(root_dir,index.replace(".mp4","/cropped_video.wav")))
-            and os.path.exists(os.path.join(root_dir,index.replace(".mp4","/landmarks.npy")))
+            if(os.path.exists(os.path.join(root_dir,index.replace(".mp4","/crop_face_00.mp4"))) 
+            and os.path.exists(os.path.join(root_dir,index.replace(".mp4",f"/{video}_audio.wav")))
+            and os.path.exists(os.path.join(root_dir,index.replace(".mp4","/landmarks_00.npy")))
             ):
                 # print(index,row["label"])
-                if os.path.exists(os.path.join(root_dir,index.replace(".mp4","/cropped_video.wav"))):
-                    file_list.append({"path": os.path.join(root_dir,index.replace(".mp4","/cropped_video.mp4")),
-                            "audio_path":os.path.join(root_dir,index.replace(".mp4","/cropped_video.wav")),
-                            "landmarks": os.path.join(root_dir,index.replace(".mp4","/landmarks.npy")),
+                if os.path.exists(os.path.join(root_dir,index.replace(".mp4",f"/{video}_audio.wav"))):
+                    file_list.append({"path": os.path.join(root_dir,index.replace(".mp4","/crop_face_00.mp4")),
+                            "audio_path":os.path.join(root_dir,index.replace(".mp4",f"/{video}_audio.wav")),
+                            "landmarks": os.path.join(root_dir,index.replace(".mp4","/landmarks_00.npy")),
                             "label": 1 if row["label"]=="fake" else 0,"data_label":5 if row["label"]=="fake" else 1})
 
           
     if "KoDF" in take_datasets:
-        root_dir = "<path_to_dataset>/KoDF/features_mtcnn/"
+        root_dir = "<path_to_dataset>KoDF/features_mtcnn/"
         dataset = pd.read_csv(os.path.join(root_dir,"validate_meta_data","fake.csv"))
         dataset["folder2"] = dataset["folder2"].fillna(0)
         if partition=="test":
             dataset = dataset.iloc[:400]
 
         for index,row in dataset.iterrows():
-            # print(os.path.join(root_dir,row["folder"],str(int(row["folder2"])),row["filename"].replace(".mp4","/cropped_video.mp4")))
-            if(os.path.exists(os.path.join(root_dir,row["folder"],str(int(row["folder2"])),row["filename"].replace(".mp4","/cropped_video.mp4")))
-            and os.path.exists(os.path.join(root_dir,row["folder"],str(int(row["folder2"])),row["filename"].replace(".mp4","/cropped_video.wav")))
-                and os.path.exists(os.path.join(root_dir,row["folder"],str(int(row["folder2"])),row["filename"].replace(".mp4","/landmarks.npy")))
+            # print(os.path.join(root_dir,row["folder"],str(int(row["folder2"])),row["filename"].replace(".mp4","/crop_face_00.mp4")))
+            if(os.path.exists(os.path.join(root_dir,row["folder"],str(int(row["folder2"])),row["filename"].replace(".mp4","/crop_face_00.mp4")))
+            and os.path.exists(os.path.join(root_dir,row["folder"],str(int(row["folder2"])),row["filename"].replace(".mp4",f"/{video}_audio.wav")))
+                and os.path.exists(os.path.join(root_dir,row["folder"],str(int(row["folder2"])),row["filename"].replace(".mp4","/landmarks_00.npy")))
             ):
                 # print(index,row["video_label"])
-                file_list.append({"path": os.path.join(root_dir,row["folder"],str(int(row["folder2"])),row["filename"].replace(".mp4","/cropped_video.mp4")),
-                "audio_path": os.path.join(root_dir,row["folder"],str(int(row["folder2"])),row["filename"].replace(".mp4","/cropped_video.wav")),
-                "landmarks": os.path.join(root_dir,row["folder"],str(int(row["folder2"])),row["filename"].replace(".mp4","/landmarks.npy")),
+                file_list.append({"path": os.path.join(root_dir,row["folder"],str(int(row["folder2"])),row["filename"].replace(".mp4","/crop_face_00.mp4")),
+                "audio_path": os.path.join(root_dir,row["folder"],str(int(row["folder2"])),row["filename"].replace(".mp4",f"/{video}_audio.wav")),
+                "landmarks": os.path.join(root_dir,row["folder"],str(int(row["folder2"])),row["filename"].replace(".mp4","/landmarks_00.npy")),
                 "label": row["label"],
                 "data_label":6 })
 
+    if "CUSTOM_DATASET" in take_datasets:
+        root_dir = "<path_to_dataset>/custom_dataset_features"
+        total = 0 
+
+        for directory in os.listdir(root_dir):
+            for video in os.listdir(os.path.join(root_dir,directory)):
+                video_path = os.path.join(root_dir, directory,video,"crop_face_00.mp4")
+                audio_path = os.path.join(root_dir, directory,video,f"{video}_audio.wav")
+                landmarks_path = os.path.join(root_dir, directory,video,f"landmarks_00.npy")
+                print(video_path, audio_path)
+                # Check if the video and audio files exist
+                if os.path.exists(video_path) and os.path.exists(audio_path) and os.path.exists(landmarks_path):
+                    # Label as fake if "fake" is in the file name, otherwise real
+                    
+                    label = 1 if directory == "fake" else 0
+                    
+                    # Append to file list
+                    file_list.append({
+                        "path": video_path,
+                        "audio_path":audio_path,
+                        "landmarks": landmarks_path,
+                        "label": label,
+                        "data_label":3
+                    })
 
     print(f"Total files in filelist of  {partition} are {len(file_list)} {take_datasets}")
     return file_list
@@ -640,9 +664,15 @@ class HashFormerDataset(Dataset):
                 print("This file is not read")
                 continue
             # simple assumption: audio has *perfect* sync (16 kHz) with video fps
-            # if item["label"]==1:
-            #     n_frames = int(n_frames/2)
+            if partition=="CUSTOM_DATASET":
+                n_frames = int(n_frames/3)
+            else:
+                n_frames = self.clip_len
+            # if partition=="test":
+            
             # n_frames = self.clip_len
+            # n_frames = max(0, (n_frames - self.clip_len) // 2)
+
             # n_frames = n_frames/2
             # n_samples = int(n_frames / self.fps * self.sample_rate)
 
@@ -651,6 +681,7 @@ class HashFormerDataset(Dataset):
                     REAL+=1
                 else:
                     FAKE+=1
+
                 en_f = st_f + self.clip_len
                 st_s = int(st_f / self.fps * self.sample_rate)
                 en_s = st_s + self.clip_len_samples
@@ -799,7 +830,7 @@ class HashFormerDataset(Dataset):
             # exit()
 
             # --------- AUDIO (L,) ---------------------
-            # audio_path = item["path"].replace("cropped_video.mp4", "cropped_video.wav")
+            # audio_path = item["path"].replace("crop_face_00.mp4", "cropped_video.wav")
             if not os.path.exists(audio_path):
                 # Faceswap data (no audio) → dummy zeros
                 audio = torch.zeros(self.clip_len_samples)

@@ -267,7 +267,7 @@ def main(args):
                     "mfcc":      mfcc,      "mfcc_aug": mfcc_aug,
                     "audio":     audio,"audio_aug":audio_aug,     "video":     video,
                     "video_aug": video_aug, "text":      None,
-                    "landmarks": None, "flow":      None,
+                    "landmarks": landmarks, "flow":      None,
                     "images":    None,      "images_aug":None,
                     "labels":     label,"multi_label": multi_label
                 }

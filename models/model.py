@@ -180,7 +180,7 @@ class HashFormer(nn.Module):
             video_aug = video_aug.permute(0,2,1,3,4)
         # encode
         if landmarks is not None:
-            landmarks = self.landmark_projection(torch.flatten(landmarks, start_dim=1, end_dim=2))
+            landmarks = self.landmark_projection(torch.flatten(landmarks, start_dim=2, end_dim=3))
 
         pooled, af_tok, a_tok,vf_tok, v_tok, lf_tok, l_tok, logits= self.encoder(
             audio=audio,

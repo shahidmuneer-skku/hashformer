@@ -258,7 +258,7 @@ def main(args):
                     "audio_aug": audio_aug,
                     "audio":     None,     "video":     video,
                     "video_aug": video_aug, "text":      None,
-                    "landmarks": None, "flow":      None,
+                    "landmarks": landmarks, "flow":      None,
                     "images":    None,      "images_aug":None,
                     "labels":     label,"multi_label": multi_label
                 }
