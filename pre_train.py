@@ -635,14 +635,14 @@ def main(args):
                 logits, losses, label, v_tok = model(**batch)
 
                 losses["reconstruction"] = {}
-                if batch.get("video_aug") is not None:
+                if batch.get("video") is not None:
                     # model.module.predictor(v_tok)
                     video_recon = video_decoder(v_tok)
                     video_recon = video_decoder.unpatch_to_img(video_recon)
-                    mse_loss_video = forward_mse_loss(batch["video_aug"].permute(0,2,1,3,4), video_recon)
+                    mse_loss_video = forward_mse_loss(batch["video"].permute(0,2,1,3,4), video_recon)
                     
                     losses["reconstruction"]["video"] = forward_mse_loss(
-                            batch["video_aug"].permute(0, 2, 1, 3, 4), video_recon
+                            batch["video"].permute(0, 2, 1, 3, 4), video_recon
                         )
              
                 progress = global_step / (total_steps - 1)    # in [0,1]
@@ -816,13 +816,13 @@ def main(args):
                     
                     mse_loss_video = 0 
                     losses["reconstruction"] = {}
-                    if batch.get("video_aug") is not None:
+                    if batch.get("video") is not None:
                         # predictor(v_tok)
                         video_recon = video_decoder(v_tok)
                         video_recon = video_decoder.unpatch_to_img(video_recon)
-                        # mse_loss_video = forward_mse_loss(batch["video_aug"].permute(0,2,1,3,4), video_recon)
+                        # mse_loss_video = forward_mse_loss(batch["video"].permute(0,2,1,3,4), video_recon)
                         losses["reconstruction"]["video"] = forward_mse_loss(
-                            batch["video_aug"].permute(0, 2, 1, 3, 4), video_recon
+                            batch["video"].permute(0, 2, 1, 3, 4), video_recon
                         )
 
 

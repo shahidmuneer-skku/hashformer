@@ -585,7 +585,7 @@ def main(args):
                     video_recon = video_decoder.unpatch_to_img(video_recon)
                     # mse_loss_video = forward_mse_loss(batch["video_aug"].permute(0,2,1,3,4), video_recon)
                     losses["reconstruction"]["video"] = forward_mse_loss(
-                        batch["video_aug"].permute(0, 2, 1, 3, 4), video_recon
+                        batch["video"].permute(0, 2, 1, 3, 4), video_recon
                     )
 
 
